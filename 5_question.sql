@@ -13,7 +13,7 @@ WITH salary_price AS(
 		p.payroll_year
 ),
 czechia AS (
-	SELECT*
+	SELECT *
 	FROM t_daniel_rygl_project_sql_secondary_final AS s
 	WHERE s.country = 'Czech Republic'
 )
@@ -28,4 +28,5 @@ SELECT
 	sp.avg_food_price  -lag(sp.avg_food_price) OVER (ORDER BY cz."year" ) AS food_price_yoy_different
 FROM czechia AS cz
 LEFT JOIN salary_price AS sp 
+
 	ON cz."year" = sp.payroll_year;
